@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       release_id:
-       description: release version (^^ always run from main)
-       default: 9.9.9
-       required: true
+        description: release version (^^ always run from main)
+        default: 9.9.9
+        required: true
 
 permissions: read-all
 
@@ -39,3 +39,16 @@ jobs:
           echo ${{github.event.inputs.release_id}}
           echo ${{github.event.release.release_id}}
           echo ${{ steps.setId.outputs.release_id }}
+
+      - name: Write Files
+        run: |
+          mkdir boops && touch boops/boop_$(date +'%Y-%m-%d_%H:%M:%S').txt && touch not_a_boop$(date +'%Y-%m-%d_%H:%M:%S').txt
+
+      - name: Commit Boops
+        uses: EndBug/add-and-commit@v8
+        if: ${{ steps.variables.outputs.IS_DRY_RUN == 'false' }}
+        with:
+          add: boops
+          author_name: 'Github Bot'
+          author_email: 'bot@nathanielmay.com'
+          message: 'adding a boop'
