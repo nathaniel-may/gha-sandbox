@@ -10,7 +10,7 @@ on:
         default: 9.9.9
         required: true
 
-by default, read only permissions for all jobs
+# by default, read only permissions for all jobs
 permissions: read-all
 
 jobs:
