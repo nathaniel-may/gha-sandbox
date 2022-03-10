@@ -10,16 +10,16 @@ on:
         default: 9.9.9
         required: true
 
-# by default, read only permissions for all jobs
-# permissions: read-all
+by default, read only permissions for all jobs
+permissions: read-all
 
 jobs:
   step:
     runs-on: ubuntu-latest
     
-    # # this job has write permissions
-    # permissions:
-    #   contents: write
+    # this job has write permissions
+    permissions:
+      contents: write
     
     steps:
     
@@ -53,7 +53,6 @@ jobs:
 
       - name: Commit Boops
         uses: EndBug/add-and-commit@v8
-        if: ${{ steps.variables.outputs.IS_DRY_RUN == 'false' }}
         with:
           add: boops
           author_name: 'Github Bot'
