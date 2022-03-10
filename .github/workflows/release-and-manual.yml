@@ -11,15 +11,15 @@ on:
         required: true
 
 # by default, read only permissions for all jobs
-permissions: read-all
+# permissions: read-all
 
 jobs:
   step:
     runs-on: ubuntu-latest
     
-    # this job has write permissions
-    permissions:
-      contents: write
+    # # this job has write permissions
+    # permissions:
+    #   contents: write
     
     steps:
     
